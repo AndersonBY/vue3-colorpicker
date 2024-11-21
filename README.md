@@ -13,7 +13,7 @@ Note: This document is for Vue3ColorPicker v2. If you are looking for an older v
 ## Installation
 
 ```
-yarn add vue3-colorpicker
+pnpm add vue3-colorpicker
 ```
 
 OR

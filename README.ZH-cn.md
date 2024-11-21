@@ -11,7 +11,7 @@
 ## 安装
 
 ```
-yarn add vue3-colorpicker
+pnpm add vue3-colorpicker
 ```
 
 或者
