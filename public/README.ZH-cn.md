@@ -11,13 +11,13 @@
 ## 安装
 
 ```
-pnpm add vue3-colorpicker
+pnpm add @makerbi/vue3-colorpicker
 ```
 
 或者
 
 ```
-npm install vue3-colorpicker
+npm install @makerbi/vue3-colorpicker
 ```
 
 ## 如何使用
@@ -25,8 +25,8 @@ npm install vue3-colorpicker
 ### 第一步全局注册
 
 ```
-import Vue3ColorPicker from "vue3-colorpicker";
-import "vue3-colorpicker/style.css";
+import Vue3ColorPicker from "@makerbi/vue3-colorpicker";
+import "@makerbi/vue3-colorpicker/dist/style.css";
 
 createApp(App)
   .use(router)
@@ -37,8 +37,8 @@ createApp(App)
 或者局部注册
 
 ```vue3
-import { ColorPicker } from "vue3-colorpicker";
-import "vue3-colorpicker/style.css";
+import { ColorPicker as VueColorPicker } from "@makerbi/vue3-colorpicker";
+import "@makerbi/vue3-colorpicker/dist/style.css";
 
 export default defineComponent({
 components: { ColorPicker },
