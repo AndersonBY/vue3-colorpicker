@@ -1,10 +1,7 @@
 module.exports = {
   root: true,
-  plugins: [
-    "stylelint-order",
-    // "stylelint-no-unsupported-browser-features"
-  ],
-  extends: ["stylelint-config-standard", "stylelint-config-prettier"],
+  plugins: ["stylelint-order"],
+  extends: ["stylelint-config-standard", "stylelint-config-recommended-vue"],
   rules: {
     "selector-pseudo-class-no-unknown": [
       true,
@@ -39,29 +36,21 @@ module.exports = {
     ],
     "no-empty-source": null,
     "named-grid-areas-no-invalid": null,
-    "unicode-bom": "never",
     "no-descending-specificity": null,
     "font-family-no-missing-generic-family-keyword": null,
-    "declaration-colon-space-after": "always-single-line",
-    "declaration-colon-space-before": "never",
     "no-invalid-position-at-import-rule": null,
-    // 'declaration-block-trailing-semicolon': 'always',
     "rule-empty-line-before": [
       "always",
       {
         ignore: ["after-comment", "first-nested"],
       },
     ],
-    "unit-no-unknown": [true, { ignoreUnits: ["rpx"] }],
-    // "plugin/no-unsupported-browser-features": [
-    //   true,
-    //   {
-    //     browsers: ["> 0.5%", "last 2 versions", "Firefox ESR", "not dead", "IE 11", "not IE 10"],
-    //     ignore: ["rem"],
-    //     ignorePartialSupport: true,
-    //     severity: "warning",
-    //   },
-    // ],
+    "unit-no-unknown": [
+      true,
+      {
+        ignoreUnits: ["rpx"],
+      },
+    ],
     "order/order": [
       [
         "dollar-variables",
@@ -78,8 +67,23 @@ module.exports = {
         },
         "rules",
       ],
-      { severity: "warning" },
+      {
+        severity: "warning",
+      },
     ],
+    "media-feature-range-notation": null,
+    "import-notation": null,
+    "function-no-unknown": null,
+    "custom-property-pattern": null,
+    "selector-class-pattern": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null,
   },
+  overrides: [
+    {
+      files: ["**/*.{vue,html,scss,sass}"],
+      customSyntax: "postcss-html",
+    },
+  ],
   ignoreFiles: ["**/*.js", "**/*.jsx", "**/*.tsx", "**/*.ts"],
 };
