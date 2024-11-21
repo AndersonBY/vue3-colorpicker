@@ -9,9 +9,9 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "typeRoots": ["types"],
-    "types": ["vite/client", "webpack-env"],
+    "types": ["vite/client"],
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
   },

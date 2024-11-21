@@ -4,9 +4,18 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+      },
+      scss: {
+        api: "modern-compiler",
+      },
+    },
+  },
   server: {
     port: 3000,
-    https: false,
     hmr: {
       host: "localhost",
       port: 3001,

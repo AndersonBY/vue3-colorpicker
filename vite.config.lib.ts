@@ -3,6 +3,8 @@ import vue from "@vitejs/plugin-vue";
 import * as path from "path";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import dts from "vite-plugin-dts";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 import pkg from "./package.json";
 
@@ -12,12 +14,18 @@ const external = function (id: string) {
   return /^vue/.test(id) || deps.some((k) => new RegExp("^" + k).test(id));
 };
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 // https://vitejs.dev/config/
 export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
+      },
+      scss: {
+        api: "modern-compiler",
       },
     },
   },

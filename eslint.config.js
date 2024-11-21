@@ -94,6 +94,7 @@ export default [
   },
   {
     files: ["**/*.{ts,tsx}"],
+    ignores: ["**/vite.config*.ts"],
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
@@ -101,7 +102,20 @@ export default [
       },
     },
     rules: {
-      ...typescript.configs.recommended.rules,
+      "prettier/prettier": "error",
+    },
+  },
+  {
+    files: ["**/vite.config*.ts"],
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: "module",
+      },
+    },
+    rules: {
+      "prettier/prettier": "error",
     },
   },
   {
