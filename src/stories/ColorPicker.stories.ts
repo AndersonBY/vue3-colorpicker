@@ -176,7 +176,9 @@ export default {
   } as unknown as Partial<ArgTypes<ColorPickerProps>>,
 } as Meta;
 
-const Template: StoryFn<ColorPickerProps> = (args: ColorPickerProps) => {
+const Template: StoryFn<ColorPickerProps & { extra?: string }> = (
+  args: ColorPickerProps & { extra?: string }
+) => {
   return {
     components: { ColorPicker },
     setup() {
@@ -275,7 +277,7 @@ DisableAlpha.args = {
   disableAlpha: true,
 };
 
-export const ExtraSlot: StoryFn<ColorPickerProps> = Template.bind({});
+export const ExtraSlot: StoryFn<ColorPickerProps & { extra?: string }> = Template.bind({});
 
 ExtraSlot.args = {
   isWidget: true,
