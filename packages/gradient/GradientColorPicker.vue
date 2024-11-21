@@ -7,57 +7,64 @@
           class="back"
           style="cursor: pointer"
           @click="onBack"
-        ></div>
+        >
+        </div>
       </div>
 
       <div class="vc-gradient__types">
         <div class="vc-gradient-wrap__types">
           <div
-            class="vc-gradient__type"
-            :class="{ active: state.type === typeItem }"
             v-for="typeItem in ['linear', 'radial']"
             :key="typeItem"
+            class="vc-gradient__type"
+            :class="{ active: state.type === typeItem }"
             @click="onTypeChange"
           >
             {{ lang ? lang[typeItem] : typeItem }}
           </div>
         </div>
 
-        <div class="vc-picker-degree-input vc-degree-input" v-show="state.type === 'linear'">
+        <div v-show="state.type === 'linear'" class="vc-picker-degree-input vc-degree-input">
           <div class="vc-degree-input__control">
             <input :value="state.angle" @blur="onDegreeBlur" />deg
           </div>
 
           <div class="vc-degree-input__panel">
             <div class="vc-degree-input__disk">
-              <Angle v-model:angle="state.angle" :size="40" @change="onDegreeChange" />
+              <Angle
+                v-model:angle="state.angle"
+                :size="40"
+                :border-width="1"
+                border-color="#ccc"
+                @change="onDegreeChange"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="vc-gradient-picker__body">
-      <div class="vc-color-range" ref="colorRangeRef">
+      <div ref="colorRangeRef" class="vc-color-range">
         <div class="vc-color-range__container">
           <div class="vc-background" :style="gradientBg"></div>
           <div class="vc-gradient__stop__container">
             <div
+              ref="startGradientRef"
               class="vc-gradient__stop"
               :class="{
                 'vc-gradient__stop--current': state.startActive,
               }"
-              ref="startGradientRef"
               :title="lang?.start"
               :style="{ left: getStartColorLeft + 'px', backgroundColor: state.startColorRgba }"
             >
               <span class="vc-gradient__stop--inner"></span>
             </div>
             <div
+              ref="stopGradientRef"
               class="vc-gradient__stop"
               :class="{
                 'vc-gradient__stop--current': !state.startActive,
               }"
-              ref="stopGradientRef"
               :title="lang?.end"
               :style="{ left: getEndColorLeft + 'px', backgroundColor: state.endColorRgba }"
             >
@@ -473,7 +480,7 @@
 
     &__body {
       margin-bottom: 12px;
-      display: -ms-flexbox;
+      display: flexbox;
       display: flex;
       align-items: center;
 
@@ -519,7 +526,9 @@
               &--current {
                 position: relative;
                 z-index: 1;
-                box-shadow: 0 0 2px 2px rgb(34, 83, 244), 0 0 1px 1px rgb(34, 83, 244, 0.5);
+                box-shadow:
+                  0 0 2px 2px rgb(34, 83, 244),
+                  0 0 1px 1px rgb(34, 83, 244, 0.5);
               }
             }
           }
@@ -573,7 +582,9 @@
         .vc-degree-input__disk {
           padding: 4px;
           background-color: #f1f1f1;
-          box-shadow: 0 0 2px rgba(0, 0, 0, 0.16), 0 1px 8px rgba(0, 0, 0, 0.06),
+          box-shadow:
+            0 0 2px rgba(0, 0, 0, 0.16),
+            0 1px 8px rgba(0, 0, 0, 0.06),
             0 4px 12px rgba(0, 0, 0, 0.08);
           border-radius: 4px;
           display: flex;

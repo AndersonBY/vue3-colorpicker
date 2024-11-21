@@ -1,7 +1,16 @@
-import { computed, ref, watch, onMounted, defineComponent } from "vue";
+import { computed, ref, watch, onMounted, defineComponent, h } from "vue";
 import { calcAngle, triggerDragEvent, DragEventOption } from "./utils";
 
 import "./index.scss";
+
+import type { DefineComponent } from "vue";
+
+export interface AngleProps {
+  angle: number;
+  size: number;
+  borderWidth: number;
+  borderColor: string;
+}
 
 const angleProps = {
   angle: {
@@ -32,7 +41,7 @@ export default defineComponent({
   name: "Angle",
   props: angleProps,
   emits: ["update:angle", "change"],
-  setup(props, { emit }) {
+  setup(props: AngleProps, { emit }) {
     const angleRef = ref<HTMLElement | null>(null);
 
     const rotate = ref(0);
@@ -87,11 +96,13 @@ export default defineComponent({
     });
 
     return () => {
-      return (
-        <div class="bee-angle">
-          <div class="bee-angle__round" ref={angleRef} style={getStyle.value} />
-        </div>
-      );
+      return h("div", { class: "bee-angle" }, [
+        h("div", {
+          class: "bee-angle__round",
+          ref: angleRef,
+          style: getStyle.value,
+        }),
+      ]);
     };
   },
-});
+}) as DefineComponent<AngleProps>;
