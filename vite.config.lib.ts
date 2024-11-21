@@ -55,7 +55,7 @@ export default defineConfig({
     dts({
       root: ".",
       tsConfigFilePath: "./tsconfig.lib.json",
-      insertTypesEntry: false,
+      insertTypesEntry: true,
       copyDtsFiles: false,
       outputDir: "dist/types",
       exclude: ["./node_modules"],
