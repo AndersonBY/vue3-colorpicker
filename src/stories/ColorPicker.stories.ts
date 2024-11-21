@@ -157,10 +157,9 @@ export default {
       type: "boolean",
       table: {
         defaultValue: {
-          summary: false,
+          summary: "true",
         },
       },
-      description: "Auto close picker popup when mouse leave (only isWidget is false)",
     },
     defaultPopup: {
       type: "boolean",
@@ -174,16 +173,16 @@ export default {
     extra: {
       description: "Add custom template on picker footer, example: rest button",
     },
-  } as Partial<ArgTypes<ColorPickerProps>>,
+  } as unknown as Partial<ArgTypes<ColorPickerProps>>,
 } as Meta;
 
-const Template: StoryFn<ColorPickerProps> = (args: ColorPickerProps | any) => {
+const Template: StoryFn<ColorPickerProps> = (args: ColorPickerProps) => {
   return {
     components: { ColorPicker },
     setup() {
       const pureColor = ref<ColorInput>("");
       const gradientColor = ref<ColorInput>("");
-      return { args: args, pureColor, gradientColor };
+      return { args, pureColor, gradientColor };
     },
     template: `<div class="demo">
         <ColorPicker v-model:pureColor="pureColor" v-model:gradientColor="gradientColor" v-bind="args">
@@ -276,7 +275,7 @@ DisableAlpha.args = {
   disableAlpha: true,
 };
 
-export const ExtraSlot: StoryFn<ColorPickerProps | any> = Template.bind({});
+export const ExtraSlot: StoryFn<ColorPickerProps> = Template.bind({});
 
 ExtraSlot.args = {
   isWidget: true,
